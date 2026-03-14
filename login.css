@@ -18,6 +18,10 @@ body {
     background-color: white;
 }
 
+a.logo {
+    text-decoration: none;
+    color: inherit;
+}
 .logo img {
     height: 90px;
 }

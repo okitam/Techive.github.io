@@ -20,6 +20,10 @@ body {
     z-index: 1000;
 }
 
+a.logo {
+    text-decoration: none;
+    color: inherit;
+}
 .logo img {
     height: 90px;
     cursor: pointer;
