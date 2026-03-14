@@ -52,6 +52,10 @@
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            var email = document.getElementById('email').value;
+            var userData = JSON.parse(localStorage.getItem('userData') || '{}');
+            userData.email = email;
+            localStorage.setItem('userData', JSON.stringify(userData));
             window.location.href = 'home.html';
         });
 

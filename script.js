@@ -216,6 +216,8 @@ function loadUserData() {
 // Logout function
 function logout() {
     localStorage.removeItem('userData');
+    localStorage.removeItem('cartItems');
+    cartItems = [];
     window.location.href = 'index.html';
 }
 function goToAccount() {
@@ -226,32 +228,30 @@ function goToAccount() {
 function loadUserData() {
     const userData = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
-        const defaultUser = {
-            name: 'Edgar Jerald Toledo',
-            email: 'edgarjerald19@gmail.com',
-            address: 'Philippines'
-        };
-        localStorage.setItem('userData', JSON.stringify(defaultUser));
-        displayUserData(defaultUser);
-    } else {
-        displayUserData(userData);
+        window.location.href = 'index.html'; // Redirect to login if not logged in
+        return;
     }
+    displayUserData(userData);
 }
 
-// Display user data
+// Display user data (account page uses inputs, so set .value)
 function displayUserData(userData) {
     const userNameElement = document.getElementById('userName');
     const userEmailElement = document.getElementById('userEmail');
+    const userPhoneElement = document.getElementById('userPhone');
     const userAddressElement = document.getElementById('userAddress');
     
-    if (userNameElement) userNameElement.textContent = userData.name;
-    if (userEmailElement) userEmailElement.textContent = userData.email;
-    if (userAddressElement) userAddressElement.textContent = userData.address;
+    if (userNameElement) userNameElement.value = userData.name || '';
+    if (userEmailElement) userEmailElement.value = userData.email || '';
+    if (userPhoneElement) userPhoneElement.value = userData.phone || '';
+    if (userAddressElement) userAddressElement.value = userData.address || '';
 }
 
 // Logout function
 function logout() {
     localStorage.removeItem('userData');
+    localStorage.removeItem('cartItems');
+    cartItems = [];
     window.location.href = 'index.html';
 }
 
